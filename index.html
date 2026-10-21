@@ -1,18 +1,18 @@
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0a0710">
-
   <title>Viper Clan | Minecraft PvP</title>
 
   <style>
     :root {
-      --background: #0a0710;
+      --bg: #0a0710;
       --panel: #15101e;
       --purple: #a020f0;
-      --light-purple: #d58aff;
+      --light: #d58aff;
       --white: #f7f2ff;
       --muted: #b8adc5;
       --border: #30203d;
@@ -24,24 +24,19 @@
       padding: 0;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
-      background: var(--background);
+      background: var(--bg);
       color: var(--white);
       font-family: Arial, sans-serif;
       line-height: 1.6;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    a { color: inherit; text-decoration: none; }
 
     header {
-      background: rgba(10, 7, 16, 0.96);
+      background: #0a0710f5;
       border-bottom: 1px solid var(--border);
       padding: 18px 7%;
       position: sticky;
@@ -58,7 +53,7 @@
     }
 
     .logo {
-      color: var(--light-purple);
+      color: var(--light);
       font-size: 24px;
       font-weight: 900;
       letter-spacing: 2px;
@@ -66,53 +61,44 @@
 
     .nav-links {
       display: flex;
-      gap: 22px;
+      gap: 18px;
       flex-wrap: wrap;
       color: var(--muted);
     }
 
-    .nav-links a:hover {
-      color: var(--light-purple);
-    }
+    .nav-links a:hover { color: var(--light); }
 
     .hero {
-      min-height: 520px;
-      padding: 100px 20px;
+      min-height: 480px;
+      padding: 90px 20px;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      background:
-        radial-gradient(ellipse at center, #32104b 0%, #160b21 42%, #0a0710 75%);
+      background: radial-gradient(ellipse at center, #32104b, #160b21 45%, #0a0710 78%);
     }
 
-    .hero-content {
-      max-width: 800px;
-    }
+    .hero-content { max-width: 800px; }
 
     .tag {
       display: inline-block;
-      color: var(--light-purple);
+      color: var(--light);
       border: 1px solid var(--purple);
       border-radius: 30px;
       padding: 6px 16px;
       margin-bottom: 24px;
       font-size: 13px;
       letter-spacing: 2px;
-      text-transform: uppercase;
     }
 
     h1 {
       font-size: clamp(42px, 9vw, 82px);
       line-height: 1.1;
       margin-bottom: 20px;
-      letter-spacing: 3px;
       text-shadow: 0 0 35px #a020f077;
     }
 
-    h1 span {
-      color: var(--light-purple);
-    }
+    h1 span { color: var(--light); }
 
     .hero p {
       max-width: 620px;
@@ -126,33 +112,27 @@
       padding: 13px 24px;
       border-radius: 9px;
       font-weight: bold;
+      border: 1px solid var(--purple);
       transition: 0.2s;
-      cursor: pointer;
-      border: none;
-      font-size: 15px;
+      margin: 5px;
     }
 
     .button-primary {
       background: var(--purple);
       color: white;
-      box-shadow: 0 0 22px #a020f044;
     }
 
-    .button-primary:hover {
-      background: #b84cff;
+    .button:hover {
       transform: translateY(-2px);
+      filter: brightness(1.2);
     }
 
     .button-secondary {
-      border: 1px solid var(--border);
       background: var(--panel);
-      color: var(--white);
-      margin-left: 8px;
+      border-color: var(--border);
     }
 
-    section {
-      padding: 75px 7%;
-    }
+    section { padding: 70px 7%; }
 
     .section-title {
       text-align: center;
@@ -175,28 +155,24 @@
       margin: auto;
     }
 
-    .card {
+    .card, .music-box, .welcome-box {
       background: var(--panel);
       border: 1px solid var(--border);
       border-radius: 14px;
-      padding: 28px;
-      transition: 0.2s;
+      padding: 26px;
     }
 
-    .card:hover {
-      border-color: var(--purple);
-      transform: translateY(-4px);
-    }
+    .card { transition: 0.2s; }
+
+    .card:hover { border-color: var(--purple); }
 
     .card h3 {
-      color: var(--light-purple);
+      color: var(--light);
       margin-bottom: 12px;
       font-size: 20px;
     }
 
-    .card p {
-      color: var(--muted);
-    }
+    .card p { color: var(--muted); }
 
     .discord-section {
       background: #100b18;
@@ -205,25 +181,35 @@
       text-align: center;
     }
 
-    .welcome-box {
-      max-width: 650px;
+    .music-box {
+      max-width: 700px;
       margin: auto;
-      padding: 30px;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      background: var(--panel);
     }
 
-    .welcome-box label {
+    .music-box iframe {
       display: block;
-      text-align: left;
+      width: 100%;
+      border: 0;
+      border-radius: 12px;
+    }
+
+    .music-note {
+      color: var(--muted);
+      text-align: center;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .welcome-box { max-width: 650px; margin: auto; }
+
+    label {
+      display: block;
       margin: 18px 0 8px;
-      color: var(--light-purple);
+      color: var(--light);
       font-weight: bold;
     }
 
-    input,
-    textarea {
+    input, textarea {
       width: 100%;
       padding: 13px;
       border: 1px solid var(--border);
@@ -231,26 +217,18 @@
       background: #0c0812;
       color: white;
       font: inherit;
-      outline: none;
     }
 
-    input:focus,
-    textarea:focus {
-      border-color: var(--purple);
-    }
+    textarea { min-height: 100px; resize: vertical; }
 
-    textarea {
-      min-height: 100px;
-      resize: vertical;
-    }
-
-    .welcome-box .button {
-      margin-top: 15px;
+    .welcome-box button {
       width: 100%;
+      cursor: pointer;
+      font-size: 15px;
     }
 
     #welcome-result {
-      color: var(--light-purple);
+      color: var(--light);
       margin-top: 18px;
       overflow-wrap: anywhere;
     }
@@ -262,45 +240,25 @@
       font-size: 14px;
     }
 
-    footer span {
-      color: var(--light-purple);
-    }
+    footer span { color: var(--light); }
 
     @media (max-width: 600px) {
-      header {
-        padding: 16px 5%;
-      }
-
-      .nav-links {
-        gap: 13px;
-        font-size: 14px;
-      }
-
-      .hero {
-        min-height: 450px;
-        padding: 75px 20px;
-      }
-
-      section {
-        padding: 55px 5%;
-      }
-
-      .button-secondary {
-        margin: 10px 0 0;
-      }
+      header { padding: 16px 5%; }
+      .nav-links { gap: 12px; font-size: 14px; }
+      section { padding: 50px 5%; }
+      .hero { min-height: 420px; padding: 65px 20px; }
     }
   </style>
 </head>
 
 <body>
-
   <header>
     <nav>
       <a class="logo" href="#start">VIPER CLAN</a>
-
       <div class="nav-links">
         <a href="#start">Start</a>
         <a href="#about">Über uns</a>
+        <a href="#music">Musik</a>
         <a href="#discord">Discord</a>
         <a href="#welcome">Nachricht</a>
       </div>
@@ -311,24 +269,16 @@
     <section class="hero" id="start">
       <div class="hero-content">
         <div class="tag">Minecraft PvP Community</div>
-
         <h1>VIPER <span>CLAN</span></h1>
-
         <p>
           Gemeinsam stark. Gemeinsam gewinnen.
           Werde Teil unserer Community und kämpfe mit uns!
         </p>
-
-        <!-- ERSETZE DEN LINK DURCH DEINEN DISCORD-EINLADUNGSLINK -->
-        <a
-          class="button button-primary"
-          href="https://discord.gg/aXCUbF9Qr8"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a class="button button-primary"
+           href="https://discord.gg/aXCUbF9Qr8"
+           target="_blank" rel="noopener noreferrer">
           Discord beitreten
         </a>
-
         <a class="button button-secondary" href="#about">
           Mehr erfahren
         </a>
@@ -337,7 +287,6 @@
 
     <section id="about">
       <h2 class="section-title">Willkommen beim Viper Clan</h2>
-
       <p class="section-description">
         Du suchst einen Minecraft-Clan, willst neue Leute kennenlernen
         und gemeinsam besser werden? Dann bist du hier richtig!
@@ -346,51 +295,54 @@
       <div class="cards">
         <article class="card">
           <h3>Minecraft PvP</h3>
-          <p>
-            Spiele mit unserem Team, verbessere deine Fähigkeiten
-            und stelle dich neuen Herausforderungen.
-          </p>
+          <p>Spiele mit unserem Team, verbessere deine Fähigkeiten und stelle dich neuen Herausforderungen.</p>
         </article>
-
         <article class="card">
           <h3>Unsere Community</h3>
-          <p>
-            Lerne andere Mitglieder kennen, tausche dich aus
-            und werde Teil unserer Clan-Gemeinschaft.
-          </p>
+          <p>Lerne andere Mitglieder kennen und werde Teil unserer Clan-Gemeinschaft.</p>
         </article>
-
         <article class="card">
           <h3>Clan-News</h3>
-          <p>
-            Hier kannst du später Neuigkeiten, Events und
-            wichtige Ankündigungen des Viper Clans veröffentlichen.
-          </p>
+          <p>Hier findest du später Neuigkeiten, Events und wichtige Ankündigungen.</p>
         </article>
+      </div>
+    </section>
+
+    <section id="music">
+      <h2 class="section-title">Viper Clan Musik</h2>
+      <p class="section-description">
+        Höre deinen ausgewählten Track direkt auf unserer Webseite.
+      </p>
+
+      <div class="music-box">
+        <iframe
+          title="Viper Clan Spotify Player"
+          src="https://open.spotify.com/embed/track/3Hz3hmzSeIqgQX1OvA2Mql?utm_source=generator"
+          height="152"
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy">
+        </iframe>
+        <p class="music-note">
+          Die Wiedergabe erfolgt über Spotify. Je nach Gerät und Konto
+          können Einschränkungen gelten.
+        </p>
       </div>
     </section>
 
     <section class="discord-section" id="discord">
       <h2 class="section-title">Unser Discord</h2>
-
       <p class="section-description">
         Komm auf unseren Discord-Server und lerne die Community kennen.
       </p>
-
-      <!-- HIER DEINEN ECHTEN EINLADUNGSLINK EINTRAGEN -->
-      <a
-        class="button button-primary"
-        href="https://discord.com/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <a class="button button-primary"
+         href="https://discord.gg/aXCUbF9Qr8"
+         target="_blank" rel="noopener noreferrer">
         Zum Discord-Server
       </a>
     </section>
 
     <section id="welcome">
       <h2 class="section-title">Schreib eine Nachricht</h2>
-
       <p class="section-description">
         Hinterlasse eine Begrüßung auf dieser Webseite.
       </p>
@@ -398,27 +350,17 @@
       <div class="welcome-box">
         <form id="welcome-form">
           <label for="username">Dein Name</label>
-          <input
-            id="username"
-            type="text"
-            maxlength="30"
-            placeholder="Wie heißt du?"
-            required
-          >
+          <input id="username" type="text" maxlength="30"
+                 placeholder="Wie heißt du?" required>
 
           <label for="message">Deine Nachricht</label>
-          <textarea
-            id="message"
-            maxlength="300"
-            placeholder="Hallo Viper Clan!"
-            required
-          ></textarea>
+          <textarea id="message" maxlength="300"
+                    placeholder="Hallo Viper Clan!" required></textarea>
 
           <button class="button button-primary" type="submit">
             Nachricht anzeigen
           </button>
         </form>
-
         <p id="welcome-result" aria-live="polite"></p>
       </div>
     </section>
@@ -446,6 +388,5 @@
       result.textContent = username + " schreibt: " + message;
     });
   </script>
-
-</body> audio controls, source src leer, type audio/mpeg, und darunter steht ein kleiner Hinweistext: „Musik kommt bald.
+</body>
 </html>
