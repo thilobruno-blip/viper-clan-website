@@ -1,5 +1,451 @@
-<!DOCTYPE html> <html lang="de"> <head> '<meta charset="UTF-8">' '<title>Viper Clan</title>' <style> body { margin: 0; background: #0a0a0a; color: white; font-family: Arial, sans-serif; text-align: center; } header { background: #151515; padding: 25px; border-bottom: 2px solid #a020f0; } h1 { color: #a020f0; font-size: 42px; text-shadow: 0 0 15px #a020f0; } main { padding: 50px 20px; }h2 { color: #a020f0; } p { font-size: 18px; line-height: 1.6; } .button { display: inline-block; background: #a020f0; color: white; padding: 15px 28px; margin-top: 20px; border-radius: 8px; text-decoration: none; font-weight: bold; } .button:hover { background: #7b16b8; } footer { margin-top: 60px; padding: 20px; background: #151515; color: #aaa; } </style> </head> <body> <header>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0a0710">
 
-Gemeinsam stark. Gemeinsam gewinnen.</p> </header> <main> <h2>Willkommen beim Viper Clan!</h2> Willkommen auf der offiziellen Webseite des Viper Clans. Du möchtest unserem Clan beitreten? Unser Discord.
+  <title>Viper Clan | Minecraft PvP</title>
 
-</a> </main> <footer> © 2026 Viper Clan </footer> </body> </html>
+  <style>
+    :root {
+      --background: #0a0710;
+      --panel: #15101e;
+      --purple: #a020f0;
+      --light-purple: #d58aff;
+      --white: #f7f2ff;
+      --muted: #b8adc5;
+      --border: #30203d;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--background);
+      color: var(--white);
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    header {
+      background: rgba(10, 7, 16, 0.96);
+      border-bottom: 1px solid var(--border);
+      padding: 18px 7%;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      color: var(--light-purple);
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--light-purple);
+    }
+
+    .hero {
+      min-height: 520px;
+      padding: 100px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background:
+        radial-gradient(ellipse at center, #32104b 0%, #160b21 42%, #0a0710 75%);
+    }
+
+    .hero-content {
+      max-width: 800px;
+    }
+
+    .tag {
+      display: inline-block;
+      color: var(--light-purple);
+      border: 1px solid var(--purple);
+      border-radius: 30px;
+      padding: 6px 16px;
+      margin-bottom: 24px;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(42px, 9vw, 82px);
+      line-height: 1.1;
+      margin-bottom: 20px;
+      letter-spacing: 3px;
+      text-shadow: 0 0 35px #a020f077;
+    }
+
+    h1 span {
+      color: var(--light-purple);
+    }
+
+    .hero p {
+      max-width: 620px;
+      margin: 0 auto 30px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 13px 24px;
+      border-radius: 9px;
+      font-weight: bold;
+      transition: 0.2s;
+      cursor: pointer;
+      border: none;
+      font-size: 15px;
+    }
+
+    .button-primary {
+      background: var(--purple);
+      color: white;
+      box-shadow: 0 0 22px #a020f044;
+    }
+
+    .button-primary:hover {
+      background: #b84cff;
+      transform: translateY(-2px);
+    }
+
+    .button-secondary {
+      border: 1px solid var(--border);
+      background: var(--panel);
+      color: var(--white);
+      margin-left: 8px;
+    }
+
+    section {
+      padding: 75px 7%;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+
+    .section-description {
+      text-align: center;
+      color: var(--muted);
+      margin: 0 auto 35px;
+      max-width: 650px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px;
+      transition: 0.2s;
+    }
+
+    .card:hover {
+      border-color: var(--purple);
+      transform: translateY(-4px);
+    }
+
+    .card h3 {
+      color: var(--light-purple);
+      margin-bottom: 12px;
+      font-size: 20px;
+    }
+
+    .card p {
+      color: var(--muted);
+    }
+
+    .discord-section {
+      background: #100b18;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .welcome-box {
+      max-width: 650px;
+      margin: auto;
+      padding: 30px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--panel);
+    }
+
+    .welcome-box label {
+      display: block;
+      text-align: left;
+      margin: 18px 0 8px;
+      color: var(--light-purple);
+      font-weight: bold;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #0c0812;
+      color: white;
+      font: inherit;
+      outline: none;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: var(--purple);
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .welcome-box .button {
+      margin-top: 15px;
+      width: 100%;
+    }
+
+    #welcome-result {
+      color: var(--light-purple);
+      margin-top: 18px;
+      overflow-wrap: anywhere;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    footer span {
+      color: var(--light-purple);
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding: 16px 5%;
+      }
+
+      .nav-links {
+        gap: 13px;
+        font-size: 14px;
+      }
+
+      .hero {
+        min-height: 450px;
+        padding: 75px 20px;
+      }
+
+      section {
+        padding: 55px 5%;
+      }
+
+      .button-secondary {
+        margin: 10px 0 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <nav>
+      <a class="logo" href="#start">VIPER CLAN</a>
+
+      <div class="nav-links">
+        <a href="#start">Start</a>
+        <a href="#about">Über uns</a>
+        <a href="#discord">Discord</a>
+        <a href="#welcome">Nachricht</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="start">
+      <div class="hero-content">
+        <div class="tag">Minecraft PvP Community</div>
+
+        <h1>VIPER <span>CLAN</span></h1>
+
+        <p>
+          Gemeinsam stark. Gemeinsam gewinnen.
+          Werde Teil unserer Community und kämpfe mit uns!
+        </p>
+
+        <!-- ERSETZE DEN LINK DURCH DEINEN DISCORD-EINLADUNGSLINK -->
+        <a
+          class="button button-primary"
+          href="https://discord.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Discord beitreten
+        </a>
+
+        <a class="button button-secondary" href="#about">
+          Mehr erfahren
+        </a>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2 class="section-title">Willkommen beim Viper Clan</h2>
+
+      <p class="section-description">
+        Du suchst einen Minecraft-Clan, willst neue Leute kennenlernen
+        und gemeinsam besser werden? Dann bist du hier richtig!
+      </p>
+
+      <div class="cards">
+        <article class="card">
+          <h3>Minecraft PvP</h3>
+          <p>
+            Spiele mit unserem Team, verbessere deine Fähigkeiten
+            und stelle dich neuen Herausforderungen.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Unsere Community</h3>
+          <p>
+            Lerne andere Mitglieder kennen, tausche dich aus
+            und werde Teil unserer Clan-Gemeinschaft.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Clan-News</h3>
+          <p>
+            Hier kannst du später Neuigkeiten, Events und
+            wichtige Ankündigungen des Viper Clans veröffentlichen.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="discord-section" id="discord">
+      <h2 class="section-title">Unser Discord</h2>
+
+      <p class="section-description">
+        Komm auf unseren Discord-Server und lerne die Community kennen.
+      </p>
+
+      <!-- HIER DEINEN ECHTEN EINLADUNGSLINK EINTRAGEN -->
+      <a
+        class="button button-primary"
+        href="https://discord.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Zum Discord-Server
+      </a>
+    </section>
+
+    <section id="welcome">
+      <h2 class="section-title">Schreib eine Nachricht</h2>
+
+      <p class="section-description">
+        Hinterlasse eine Begrüßung auf dieser Webseite.
+      </p>
+
+      <div class="welcome-box">
+        <form id="welcome-form">
+          <label for="username">Dein Name</label>
+          <input
+            id="username"
+            type="text"
+            maxlength="30"
+            placeholder="Wie heißt du?"
+            required
+          >
+
+          <label for="message">Deine Nachricht</label>
+          <textarea
+            id="message"
+            maxlength="300"
+            placeholder="Hallo Viper Clan!"
+            required
+          ></textarea>
+
+          <button class="button button-primary" type="submit">
+            Nachricht anzeigen
+          </button>
+        </form>
+
+        <p id="welcome-result" aria-live="polite"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 <span>Viper Clan</span> · Gemeinsam stark.</p>
+  </footer>
+
+  <script>
+    const form = document.getElementById("welcome-form");
+    const result = document.getElementById("welcome-result");
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const username = document.getElementById("username").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      if (!username || !message) {
+        result.textContent = "Bitte fülle beide Felder aus.";
+        return;
+      }
+
+      result.textContent = username + " schreibt: " + message;
+    });
+  </script>
+
+</body>
+</html>
