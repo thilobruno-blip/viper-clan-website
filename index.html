@@ -64,7 +64,7 @@
 
     .nav-links {
       display: flex;
-      gap: 22px;
+      gap: 18px;
       flex-wrap: wrap;
       color: var(--muted);
     }
@@ -117,6 +117,21 @@
       font-size: 18px;
     }
 
+    section { padding: 75px 7%; }
+
+    .section-title {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+
+    .section-description {
+      text-align: center;
+      color: var(--muted);
+      margin: 0 auto 35px;
+      max-width: 650px;
+    }
+
     .button {
       display: inline-block;
       padding: 13px 24px;
@@ -144,52 +159,42 @@
       border: 1px solid var(--border);
       background: var(--panel);
       color: var(--white);
-      margin-left: 8px;
+      margin: 8px 0 0;
     }
 
-    section { padding: 75px 7%; }
-
-    .section-title {
-      text-align: center;
-      font-size: 32px;
-      margin-bottom: 12px;
+    button:disabled {
+      opacity: 0.6;
+      cursor: wait;
     }
 
-    .section-description {
-      text-align: center;
-      color: var(--muted);
-      margin: 0 auto 35px;
-      max-width: 650px;
-    }
-
-    .cards {
+    .cards,
+    .dashboard-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 20px;
       max-width: 1100px;
-      margin: auto;
+      margin: 25px auto 0;
     }
 
-    .card {
+    .card,
+    .dashboard-card,
+    .welcome-box {
       background: var(--panel);
       border: 1px solid var(--border);
       border-radius: 14px;
-      padding: 28px;
-      transition: 0.2s;
+      padding: 26px;
     }
 
-    .card:hover {
-      border-color: var(--purple);
-      transform: translateY(-4px);
-    }
+    .card:hover { border-color: var(--purple); }
 
-    .card h3 {
+    .card h3,
+    .dashboard-card h3 {
       color: var(--light-purple);
       margin-bottom: 12px;
-      font-size: 20px;
     }
 
-    .card p { color: var(--muted); }
+    .card p,
+    .dashboard-card p { color: var(--muted); }
 
     .discord-section,
     .music-section {
@@ -201,12 +206,11 @@
 
     .music-player {
       max-width: 700px;
-      margin: 0 auto;
+      margin: auto;
       padding: 12px;
       border: 1px solid var(--border);
       border-radius: 16px;
       background: var(--panel);
-      box-shadow: 0 0 28px #a020f022;
     }
 
     .music-player iframe {
@@ -217,10 +221,6 @@
     .welcome-box {
       max-width: 650px;
       margin: auto;
-      padding: 30px;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      background: var(--panel);
     }
 
     .welcome-box label {
@@ -263,46 +263,6 @@
       overflow-wrap: anywhere;
     }
 
-    footer {
-      text-align: center;
-      padding: 30px 20px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    footer span { color: var(--light-purple); }
-
-    .dashboard-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      max-width: 1100px;
-      margin: 25px auto 0;
-    }
-
-    .dashboard-card {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 24px;
-      text-align: left;
-    }
-
-    .dashboard-card h3 {
-      color: var(--light-purple);
-      margin-bottom: 10px;
-    }
-
-    .dashboard-card p {
-      color: var(--muted);
-      overflow-wrap: anywhere;
-    }
-
-    .dashboard-card ul {
-      padding-left: 20px;
-      color: var(--muted);
-    }
-
     #dashboard { display: none; }
     #dashboard.visible { display: block; }
     #dashboard-jump { display: none; }
@@ -320,34 +280,33 @@
       margin-top: 8px;
     }
 
-    .status-message { min-height: 1.5em; }
+    .status-message {
+      min-height: 1.5em;
+      overflow-wrap: anywhere;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    footer span { color: var(--light-purple); }
 
     @media (max-width: 600px) {
       header { padding: 16px 5%; }
-
-      .nav-links {
-        gap: 13px;
-        font-size: 14px;
-      }
-
-      .hero {
-        min-height: 450px;
-        padding: 75px 20px;
-      }
-
+      .nav-links { gap: 12px; font-size: 14px; }
+      .hero { min-height: 450px; padding: 75px 20px; }
       section { padding: 55px 5%; }
-
-      .button-secondary { margin: 10px 0 0; }
     }
   </style>
 </head>
 
 <body>
-
   <header>
     <nav>
       <a class="logo" href="#start">VIPER CLAN</a>
-
       <div class="nav-links">
         <a href="#start">Start</a>
         <a href="#about">Über uns</a>
@@ -361,7 +320,6 @@
   </header>
 
   <main>
-
     <!-- STARTSEITE -->
     <section class="hero" id="start">
       <div class="hero-content">
@@ -388,7 +346,6 @@
     <!-- ÜBER UNS -->
     <section id="about">
       <h2 class="section-title">Willkommen beim Viper Clan</h2>
-
       <p class="section-description">
         Du suchst einen Minecraft-Clan, willst neue Leute kennenlernen
         und gemeinsam besser werden? Dann bist du hier richtig!
@@ -397,26 +354,17 @@
       <div class="cards">
         <article class="card">
           <h3>Minecraft PvP</h3>
-          <p>
-            Spiele mit unserem Team, verbessere deine Fähigkeiten
-            und stelle dich neuen Herausforderungen.
-          </p>
+          <p>Spiele mit unserem Team und verbessere deine Fähigkeiten.</p>
         </article>
 
         <article class="card">
           <h3>Unsere Community</h3>
-          <p>
-            Lerne andere Mitglieder kennen, tausche dich aus
-            und werde Teil unserer Clan-Gemeinschaft.
-          </p>
+          <p>Lerne andere Mitglieder kennen und werde Teil des Clans.</p>
         </article>
 
         <article class="card">
           <h3>Clan-News</h3>
-          <p>
-            Hier kannst du später Neuigkeiten, Events und
-            wichtige Ankündigungen veröffentlichen.
-          </p>
+          <p>Hier können später Clan-Neuigkeiten veröffentlicht werden.</p>
         </article>
       </div>
     </section>
@@ -424,7 +372,6 @@
     <!-- DISCORD -->
     <section class="discord-section" id="discord">
       <h2 class="section-title">Unser Discord</h2>
-
       <p class="section-description">
         Komm auf unseren Discord-Server und lerne die Community kennen.
       </p>
@@ -439,7 +386,6 @@
     <!-- SPOTIFY -->
     <section id="musik" class="music-section">
       <h2 class="section-title">Viper Clan Musik</h2>
-
       <p class="section-description">
         Hör dir den Track direkt über Spotify an.
       </p>
@@ -457,12 +403,11 @@
       </div>
     </section>
 
-    <!-- NACHRICHT -->
+    <!-- NACHRICHTEN -->
     <section id="welcome">
       <h2 class="section-title">Schreib eine Nachricht</h2>
-
       <p class="section-description">
-        Hinterlasse eine Begrüßung auf dieser Webseite.
+        Zeige deine Begrüßung auf der Webseite an.
       </p>
 
       <div class="welcome-box">
@@ -479,7 +424,6 @@
             Nachricht anzeigen
           </button>
         </form>
-
         <p id="welcome-result" aria-live="polite"></p>
       </div>
     </section>
@@ -487,7 +431,6 @@
     <!-- ANMELDUNG -->
     <section id="anmeldung" class="discord-section">
       <h2 class="section-title">Mitglied anmelden</h2>
-
       <p class="section-description">
         Melde dich mit E-Mail oder über Google und Discord an.
       </p>
@@ -533,8 +476,8 @@
            role="status" aria-live="polite"></p>
 
         <p style="color:var(--muted);font-size:13px;margin-top:10px">
-          Für Google und Discord müssen die Anbieter in Supabase aktiviert
-          und die Website-Adresse als Weiterleitungsadresse freigegeben sein.
+          Google und Discord benötigen eine Einrichtung der Anbieter
+          und Weiterleitungsadressen in Supabase.
         </p>
       </div>
     </section>
@@ -542,13 +485,11 @@
     <!-- MITGLIEDER-DASHBOARD -->
     <section id="dashboard">
       <h2 class="section-title">Viper Clan Dashboard</h2>
-
       <p class="section-description" id="dashboard-welcome">
         Willkommen im Mitgliederbereich!
       </p>
 
       <div class="dashboard-grid">
-
         <article class="dashboard-card">
           <h3>👤 Mein Profil</h3>
           <p><strong>Angemeldet als:</strong></p>
@@ -559,8 +500,8 @@
         <article class="dashboard-card">
           <h3>📢 Clan-News</h3>
           <p>
-            Willkommen beim Viper Clan! Besuche unseren Discord,
-            um Neuigkeiten und Events zu erfahren.
+            Willkommen beim Viper Clan! Besuche unseren Discord
+            für Neuigkeiten und Events.
           </p>
           <p style="margin-top:12px">
             <a class="button button-primary"
@@ -574,17 +515,14 @@
         <article class="dashboard-card">
           <h3>🏆 Mitglieder & Rangliste</h3>
           <p>
-            Die Mitgliederliste und Rangliste müssen noch mit einer
-            Datenbank verbunden werden.
+            Die Mitgliederliste und Rangliste müssen noch mit
+            einer Datenbank verbunden werden.
           </p>
         </article>
 
         <article class="dashboard-card">
           <h3>📝 Bewerbungen</h3>
-          <p>
-            Du möchtest dem Clan beitreten? Melde dich über Discord
-            beim Team.
-          </p>
+          <p>Du möchtest dem Clan beitreten? Melde dich beim Team.</p>
           <p style="margin-top:12px">
             <a class="button button-primary"
                href="https://discord.gg/aXCUbF9Qr8"
@@ -593,49 +531,35 @@
             </a>
           </p>
         </article>
-
       </div>
 
-      <!-- OWNER-BEREICH -->
+      <!-- OWNER -->
       <div class="dashboard-grid" aria-label="Team-Dashboards">
-
         <article class="dashboard-card role-panel" id="owner-panel">
           <h3>👑 Owner-Dashboard</h3>
-          <p>
-            Bereich für den Besitzer des Clans: Einstellungen
-            und Teamverwaltung.
-          </p>
+          <p>Clan-Einstellungen und Teamverwaltung.</p>
           <p><span class="role-badge">Owner</span></p>
         </article>
 
-        <!-- DEV-BEREICH -->
+        <!-- DEV -->
         <article class="dashboard-card role-panel" id="dev-panel">
           <h3>💻 Dev-Dashboard</h3>
-          <p>
-            Entwicklungsbereich für technische Aufgaben und
-            kommende Website-Funktionen.
-          </p>
+          <p>Entwicklungsbereich für technische Aufgaben.</p>
           <p><span class="role-badge">Dev</span></p>
         </article>
 
-        <!-- ADMIN-BEREICH -->
+        <!-- ADMIN -->
         <article class="dashboard-card role-panel" id="admin-panel">
           <h3>🛡️ Admin-Dashboard</h3>
-          <p>
-            Bereich für Moderation und Verwaltung der Community.
-          </p>
+          <p>Bereich für Moderation und Community-Verwaltung.</p>
           <p><span class="role-badge">Admin</span></p>
         </article>
-
       </div>
 
-      <p class="section-description" id="role-help"
-         style="margin-top:20px">
-        Team-Bereiche erscheinen nur, wenn die Rolle in Supabase
-        hinterlegt ist.
+      <p class="section-description" style="margin-top:20px">
+        Team-Bereiche werden nur bei einer in Supabase hinterlegten Rolle angezeigt.
       </p>
     </section>
-
   </main>
 
   <footer>
@@ -644,28 +568,21 @@
 
   <!-- NACHRICHTEN-FORMULAR -->
   <script>
-    const form = document.getElementById("welcome-form");
-    const result = document.getElementById("welcome-result");
+    document.getElementById("welcome-form")
+      .addEventListener("submit", function (event) {
+        event.preventDefault();
 
-    form.addEventListener("submit", function (event) {
-      event.preventDefault();
+        const username =
+          document.getElementById("username").value.trim();
+        const message =
+          document.getElementById("message").value.trim();
 
-      const username =
-        document.getElementById("username").value.trim();
-
-      const message =
-        document.getElementById("message").value.trim();
-
-      if (!username || !message) {
-        result.textContent = "Bitte fülle beide Felder aus.";
-        return;
-      }
-
-      result.textContent = username + " schreibt: " + message;
-    });
+        document.getElementById("welcome-result").textContent =
+          username + " schreibt: " + message;
+      });
   </script>
 
-  <!-- SUPABASE ANMELDUNG UND DASHBOARD -->
+  <!-- SUPABASE AUTHENTIFIZIERUNG -->
   <script type="module">
     import { createClient } from
       "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
@@ -694,14 +611,16 @@
       authResult.textContent = message;
     }
 
-    // Teamrollen nur aus app_metadata lesen.
-    // Diese Daten dürfen nicht vom Nutzer selbst geändert werden.
+    function getRedirectURL() {
+      return window.location.origin + window.location.pathname;
+    }
+
     function normalizedRole(user) {
+      // Rollen ausschließlich aus app_metadata lesen.
+      // Dieses Feld sollte nur serverseitig geändert werden.
       const value = user?.app_metadata?.role;
 
-      if (typeof value !== "string") {
-        return "member";
-      }
+      if (typeof value !== "string") return "member";
 
       const role = value.toLowerCase().trim();
 
@@ -725,19 +644,15 @@
       });
 
       if (!user) {
+        logoutButton.hidden = true;
         loginButton.hidden = false;
         signupButton.hidden = false;
-        logoutButton.hidden = true;
-
         dashboard.classList.remove("visible");
         dashboardJump.style.display = "none";
-
         document.getElementById("dashboard-email").textContent =
           "Noch nicht angemeldet";
-
         document.getElementById("dashboard-role").textContent =
           "Mitglied";
-
         return;
       }
 
@@ -748,7 +663,6 @@
         "Mitglied";
 
       const role = normalizedRole(user);
-
       const roleLabel =
         role === "member" ? "Mitglied" : role.toUpperCase();
 
@@ -765,8 +679,7 @@
       document.getElementById("dashboard-email").textContent =
         user.email || "Über OAuth angemeldet";
 
-      document.getElementById("dashboard-role").textContent =
-        roleLabel;
+      document.getElementById("dashboard-role").textContent = roleLabel;
 
       if (role !== "member") {
         panels[role].classList.add("visible");
@@ -775,15 +688,15 @@
       showMessage("Angemeldet als " + displayName + ".");
     }
 
-    // MIT E-MAIL ANMELDEN
-    authForm.addEventListener("submit", async (event) => {
+    // E-MAIL-ANMELDUNG
+    authForm.addEventListener("submit", async event => {
       event.preventDefault();
 
       const email = authEmail.value.trim();
       const password = authPassword.value;
 
       if (!email || !password) {
-        showMessage("Bitte gib E-Mail-Adresse und Passwort ein.");
+        showMessage("Bitte gib E-Mail und Passwort ein.");
         return;
       }
 
@@ -805,15 +718,14 @@
         }
       } catch (error) {
         showMessage(
-          "Verbindungsfehler. Öffne die Seite über HTTPS oder einen " +
-          "lokalen Webserver und prüfe deine Internetverbindung."
+          "Verbindung fehlgeschlagen. Prüfe Internet, Supabase-URL und Key."
         );
       } finally {
         loginButton.disabled = false;
       }
     });
 
-    // NEUES KONTO ERSTELLEN
+    // KONTO ERSTELLEN
     signupButton.addEventListener("click", async () => {
       const email = authEmail.value.trim();
       const password = authPassword.value;
@@ -828,57 +740,72 @@
         return;
       }
 
-      showMessage("Konto wird erstellt …");
+      if (window.location.protocol === "file:") {
+        showMessage(
+          "Öffne die Webseite über einen lokalen Webserver oder HTTPS."
+        );
+        return;
+      }
+
       signupButton.disabled = true;
+      showMessage("Konto wird erstellt …");
 
       try {
         const { data, error } = await supabase.auth.signUp({
           email,
-          password
+          password,
+          options: {
+            emailRedirectTo: getRedirectURL()
+          }
         });
 
         if (error) {
-          showMessage(
-            "Konto konnte nicht erstellt werden: " + error.message
-          );
-        } else if (data.session) {
+          showMessage("Konto konnte nicht erstellt werden: " + error.message);
+        } else if (data.session && data.user) {
           setSignedIn(data.user);
           showMessage("Konto erstellt und angemeldet.");
         } else {
           showMessage(
-            "Konto erstellt. Bitte bestätige deine E-Mail über den Link " +
-            "in deinem Postfach."
+            "Konto wurde erstellt. Bitte bestätige deine E-Mail über den Link im Postfach."
           );
         }
       } catch (error) {
         showMessage(
-          "Verbindungsfehler. Öffne die Seite über HTTPS oder einen lokalen Webserver."
+          "Verbindungsfehler. Prüfe die Supabase-Einstellungen und versuche es erneut."
         );
       } finally {
         signupButton.disabled = false;
       }
     });
 
-    // GOOGLE ODER DISCORD
+    // GOOGLE- UND DISCORD-ANMELDUNG
     async function oauth(provider) {
+      if (window.location.protocol === "file:") {
+        showMessage(
+          "Die Datei wurde direkt geöffnet. Nutze HTTPS oder einen lokalen Webserver."
+        );
+        return;
+      }
+
       showMessage("Weiterleitung zur Anmeldung …");
 
       try {
         const { error } = await supabase.auth.signInWithOAuth({
           provider,
           options: {
-            redirectTo:
-              window.location.origin + window.location.pathname
+            redirectTo: getRedirectURL()
           }
         });
 
         if (error) {
-          showMessage("Anmeldung nicht möglich: " + error.message);
+          showMessage(
+            "Supabase-Fehler: " + error.message +
+            ". Prüfe Provider und Redirect-URL."
+          );
         }
       } catch (error) {
         showMessage(
-          "OAuth konnte nicht gestartet werden. Prüfe den Anbieter " +
-          "und die Redirect-URL in Supabase."
+          "Anmeldung konnte nicht gestartet werden. Prüfe Internet und OAuth-Einstellungen."
         );
       }
     }
@@ -901,13 +828,17 @@
           showMessage("Du wurdest abgemeldet.");
         }
       } catch (error) {
-        showMessage(
-          "Abmelden gerade nicht möglich. Bitte versuche es erneut."
-        );
+        showMessage("Abmelden gerade nicht möglich. Versuche es erneut.");
       }
     });
 
-    // VORHANDENE ANMELDUNG PRÜFEN
+    // BESTEHENDE SITZUNG LADEN
+    if (window.location.protocol === "file:") {
+      showMessage(
+        "Bitte öffne die Seite über HTTPS oder einen lokalen Webserver."
+      );
+    }
+
     try {
       const { data, error } = await supabase.auth.getSession();
 
@@ -926,6 +857,5 @@
       );
     }
   </script>
-
 </body>
 </html>
