@@ -4,183 +4,726 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Viper Clan – Anmeldung</title>
+  <meta name="theme-color" content="#0a0710">
+  <title>Viper Clan | Minecraft PvP</title>
+
   <style>
-    * { box-sizing: border-box; }
-    body {
+    :root {
+      --background: #0a0710;
+      --panel: #15101e;
+      --purple: #a020f0;
+      --light-purple: #d58aff;
+      --white: #f7f2ff;
+      --muted: #b8adc5;
+      --border: #30203d;
+    }
+
+    * {
+      box-sizing: border-box;
       margin: 0;
-      min-height: 100vh;
+      padding: 0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--background);
+      color: var(--white);
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    header {
+      background: rgba(10, 7, 16, 0.96);
+      border-bottom: 1px solid var(--border);
+      padding: 18px 7%;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      color: var(--light-purple);
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--light-purple);
+    }
+
+    .hero {
+      min-height: 520px;
+      padding: 100px 20px;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 20px;
-      background: #09090d;
-      color: #fff;
-      font-family: Arial, sans-serif;
-    }
-    .panel {
-      width: 100%;
-      max-width: 440px;
-      padding: 30px;
-      border: 1px solid #6929a5;
-      border-radius: 18px;
-      background: #14121b;
       text-align: center;
-      box-shadow: 0 0 30px #7026a522;
+      background: radial-gradient(
+        ellipse at center,
+        #32104b 0%,
+        #160b21 42%,
+        #0a0710 75%
+      );
     }
-    h1 { color: #c084fc; margin-bottom: 8px; }
-    p { color: #c8c4d2; overflow-wrap: anywhere; }
-    button {
-      width: 100%;
-      padding: 14px;
-      margin-top: 12px;
-      border: 0;
+
+    .hero-content {
+      max-width: 800px;
+    }
+
+    .tag {
+      display: inline-block;
+      color: var(--light-purple);
+      border: 1px solid var(--purple);
+      border-radius: 30px;
+      padding: 6px 16px;
+      margin-bottom: 24px;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(42px, 9vw, 82px);
+      line-height: 1.1;
+      margin-bottom: 20px;
+      letter-spacing: 3px;
+      text-shadow: 0 0 35px #a020f077;
+    }
+
+    h1 span {
+      color: var(--light-purple);
+    }
+
+    .hero p {
+      max-width: 620px;
+      margin: 0 auto 30px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 13px 24px;
       border-radius: 9px;
+      font-weight: bold;
+      transition: 0.2s;
       cursor: pointer;
-      font-size: 16px;
+      border: none;
+      font-size: 15px;
+      text-align: center;
+    }
+
+    .button-primary {
+      background: var(--purple);
+      color: white;
+      box-shadow: 0 0 22px #a020f044;
+    }
+
+    .button-primary:hover {
+      background: #b84cff;
+      transform: translateY(-2px);
+    }
+
+    .button-secondary {
+      border: 1px solid var(--border);
+      background: var(--panel);
+      color: var(--white);
+      margin-left: 8px;
+    }
+
+    section {
+      padding: 75px 7%;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+
+    .section-description {
+      text-align: center;
+      color: var(--muted);
+      margin: 0 auto 35px;
+      max-width: 650px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px;
+      transition: 0.2s;
+    }
+
+    .card:hover {
+      border-color: var(--purple);
+      transform: translateY(-4px);
+    }
+
+    .card h3 {
+      color: var(--light-purple);
+      margin-bottom: 12px;
+      font-size: 20px;
+    }
+
+    .card p {
+      color: var(--muted);
+    }
+
+    .discord-section,
+    .music-section {
+      background: #100b18;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .music-player {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: var(--panel);
+      box-shadow: 0 0 28px #a020f022;
+    }
+
+    .music-player iframe {
+      display: block;
+      border: 0;
+    }
+
+    .welcome-box {
+      max-width: 650px;
+      margin: auto;
+      padding: 30px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--panel);
+    }
+
+    .welcome-box label {
+      display: block;
+      text-align: left;
+      margin: 18px 0 8px;
+      color: var(--light-purple);
       font-weight: bold;
     }
-    .google { background: #fff; color: #222; }
-    .discord { background: #5865f2; color: white; }
-    .logout { background: #7829a8; color: white; }
-    button:disabled { opacity: .6; cursor: wait; }
-    #status { margin-top: 18px; font-size: 14px; }
-    #account { margin-top: 20px; }
-    .hidden { display: none; }
-    code { color: #d8b4fe; overflow-wrap: anywhere; }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #0c0812;
+      color: white;
+      font: inherit;
+      outline: none;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: var(--purple);
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .welcome-box .button {
+      margin-top: 15px;
+      width: 100%;
+    }
+
+    #welcome-result,
+    #auth-result {
+      color: var(--light-purple);
+      margin-top: 18px;
+      overflow-wrap: anywhere;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    footer span {
+      color: var(--light-purple);
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding: 16px 5%;
+      }
+
+      .nav-links {
+        gap: 13px;
+        font-size: 14px;
+      }
+
+      .hero {
+        min-height: 450px;
+        padding: 75px 20px;
+      }
+
+      section {
+        padding: 55px 5%;
+      }
+
+      .button-secondary {
+        margin: 10px 0 0;
+      }
+    }
   </style>
 </head>
+
 <body>
-  <main class="panel">
-    <h1>🐍 VIPER CLAN</h1>
-    <p>Melde dich an, um weiterzumachen.</p>
+  <header>
+    <nav>
+      <a class="logo" href="#start">VIPER CLAN</a>
 
-    <section id="login">
-      <button class="google" id="googleBtn">
-        Mit Google anmelden
-      </button>
-      <button class="discord" id="discordBtn">
-        Mit Discord anmelden
-      </button>
+      <div class="nav-links">
+        <a href="#start">Start</a>
+        <a href="#about">Über uns</a>
+        <a href="#discord">Discord</a>
+        <a href="#musik">Musik</a>
+        <a href="#welcome">Nachricht</a>
+        <a href="#anmeldung">Anmelden</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- STARTSEITE -->
+    <section class="hero" id="start">
+      <div class="hero-content">
+        <div class="tag">Minecraft PvP Community</div>
+
+        <h1>VIPER <span>CLAN</span></h1>
+
+        <p>
+          Gemeinsam stark. Gemeinsam gewinnen.
+          Werde Teil unserer Community und kämpfe mit uns!
+        </p>
+
+        <a
+          class="button button-primary"
+          href="https://discord.gg/aXCUbF9Qr8"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Discord beitreten
+        </a>
+
+        <a class="button button-secondary" href="#about">
+          Mehr erfahren
+        </a>
+      </div>
     </section>
 
-    <section id="account" class="hidden">
-      <h2>Du bist angemeldet!</h2>
-      <p>E-Mail: <span id="email"></span></p>
-      <p>Deine User-ID:</p>
-      <code id="userId"></code>
-      <button class="logout" id="logoutBtn">Abmelden</button>
+    <!-- ÜBER UNS -->
+    <section id="about">
+      <h2 class="section-title">Willkommen beim Viper Clan</h2>
+
+      <p class="section-description">
+        Du suchst einen Minecraft-Clan, willst neue Leute kennenlernen
+        und gemeinsam besser werden? Dann bist du hier richtig!
+      </p>
+
+      <div class="cards">
+        <article class="card">
+          <h3>Minecraft PvP</h3>
+          <p>
+            Spiele mit unserem Team, verbessere deine Fähigkeiten
+            und stelle dich neuen Herausforderungen.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Unsere Community</h3>
+          <p>
+            Lerne andere Mitglieder kennen, tausche dich aus
+            und werde Teil unserer Clan-Gemeinschaft.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Clan-News</h3>
+          <p>
+            Hier kannst du später Neuigkeiten, Events und
+            wichtige Ankündigungen veröffentlichen.
+          </p>
+        </article>
+      </div>
     </section>
 
-    <p id="status">Verbindung wird vorbereitet …</p>
+    <!-- DISCORD -->
+    <section class="discord-section" id="discord">
+      <h2 class="section-title">Unser Discord</h2>
+
+      <p class="section-description">
+        Komm auf unseren Discord-Server und lerne die Community kennen.
+      </p>
+
+      <a
+        class="button button-primary"
+        href="https://discord.gg/aXCUbF9Qr8"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Zum Discord-Server
+      </a>
+    </section>
+
+    <!-- SPOTIFY -->
+    <section id="musik" class="music-section">
+      <h2 class="section-title">Viper Clan Musik</h2>
+
+      <p class="section-description">
+        Hör dir den Track direkt über Spotify an.
+      </p>
+
+      <div class="music-player">
+        <iframe
+          style="border-radius:12px"
+          src="https://open.spotify.com/embed/track/3Hz3hmzSeIqgQX1OvA2Mql?utm_source=generator"
+          width="100%"
+          height="152"
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy"
+          title="Spotify-Musikplayer">
+        </iframe>
+      </div>
+    </section>
+
+    <!-- NACHRICHT -->
+    <section id="welcome">
+      <h2 class="section-title">Schreib eine Nachricht</h2>
+
+      <p class="section-description">
+        Hinterlasse eine Begrüßung auf dieser Webseite.
+      </p>
+
+      <div class="welcome-box">
+        <form id="welcome-form">
+          <label for="username">Dein Name</label>
+          <input
+            id="username"
+            type="text"
+            maxlength="30"
+            placeholder="Wie heißt du?"
+            required
+          >
+
+          <label for="message">Deine Nachricht</label>
+          <textarea
+            id="message"
+            maxlength="300"
+            placeholder="Hallo Viper Clan!"
+            required
+          ></textarea>
+
+          <button class="button button-primary" type="submit">
+            Nachricht anzeigen
+          </button>
+        </form>
+
+        <p id="welcome-result" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <!-- SUPABASE ANMELDUNG -->
+    <section id="anmeldung" class="discord-section">
+      <h2 class="section-title">Mitglied anmelden</h2>
+
+      <p class="section-description">
+        Melde dich mit E-Mail oder über Google und Discord an.
+      </p>
+
+      <div class="welcome-box">
+        <form id="auth-form">
+          <label for="auth-email">E-Mail-Adresse</label>
+          <input
+            id="auth-email"
+            type="email"
+            autocomplete="email"
+            placeholder="name@beispiel.de"
+            required
+          >
+
+          <label for="auth-password">Passwort</label>
+          <input
+            id="auth-password"
+            type="password"
+            autocomplete="current-password"
+            minlength="6"
+            placeholder="Mindestens 6 Zeichen"
+            required
+          >
+
+          <button
+            class="button button-primary"
+            type="submit"
+            id="login-button"
+          >
+            Anmelden
+          </button>
+
+          <button
+            class="button button-secondary"
+            type="button"
+            id="signup-button"
+          >
+            Konto erstellen
+          </button>
+        </form>
+
+        <button
+          class="button button-secondary"
+          type="button"
+          id="google-button"
+        >
+          Mit Google anmelden
+        </button>
+
+        <button
+          class="button button-secondary"
+          type="button"
+          id="discord-button"
+        >
+          Mit Discord anmelden
+        </button>
+
+        <button
+          class="button button-secondary"
+          type="button"
+          id="logout-button"
+          hidden
+        >
+          Abmelden
+        </button>
+
+        <p id="auth-result" role="status" aria-live="polite"></p>
+      </div>
+    </section>
   </main>
 
+  <footer>
+    <p>© 2026 <span>Viper Clan</span> · Gemeinsam stark.</p>
+  </footer>
+
+  <!-- NACHRICHTEN-FORMULAR -->
+  <script>
+    const form = document.getElementById("welcome-form");
+    const result = document.getElementById("welcome-result");
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const username =
+        document.getElementById("username").value.trim();
+
+      const message =
+        document.getElementById("message").value.trim();
+
+      if (!username || !message) {
+        result.textContent = "Bitte fülle beide Felder aus.";
+        return;
+      }
+
+      result.textContent = username + " schreibt: " + message;
+    });
+  </script>
+
+  <!-- SUPABASE AUTHENTIFIZIERUNG -->
   <script type="module">
-    import {
-      createClient
-    } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+    import { createClient } from
+      "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 
-    // WICHTIG: Hier deine echten Supabase-Daten eintragen.
-    const SUPABASE_URL = "DEINE_SUPABASE_PROJECT_URL";
-    const SUPABASE_KEY = "DEIN_PUBLISHABLE_KEY";
+    const SUPABASE_URL =
+      "https://qabwezhdudcndelqhicl.supabase.co";
 
-    const statusEl = document.getElementById("status");
-    const loginEl = document.getElementById("login");
-    const accountEl = document.getElementById("account");
-    const googleBtn = document.getElementById("googleBtn");
-    const discordBtn = document.getElementById("discordBtn");
-    const logoutBtn = document.getElementById("logoutBtn");
+    const SUPABASE_PUBLISHABLE_KEY =
+      "sb_publishable_XKZkKJWzl0RvoiUt3TK_0A_gFi1GC9r";
 
-    let supabase;
+    const supabase = createClient(
+      SUPABASE_URL,
+      SUPABASE_PUBLISHABLE_KEY
+    );
 
-    function setStatus(message) {
-      statusEl.textContent = message;
+    const authForm = document.getElementById("auth-form");
+    const authEmail = document.getElementById("auth-email");
+    const authPassword = document.getElementById("auth-password");
+    const authResult = document.getElementById("auth-result");
+
+    const loginButton = document.getElementById("login-button");
+    const signupButton = document.getElementById("signup-button");
+    const logoutButton = document.getElementById("logout-button");
+
+    function showMessage(message) {
+      authResult.textContent = message;
     }
 
-    function setBusy(busy) {
-      googleBtn.disabled = busy;
-      discordBtn.disabled = busy;
-      logoutBtn.disabled = busy;
-    }
-
-    function showUser(user) {
+    function setSignedIn(user) {
       if (user) {
-        loginEl.classList.add("hidden");
-        accountEl.classList.remove("hidden");
-        document.getElementById("email").textContent =
-          user.email || "Keine E-Mail verfügbar";
-        document.getElementById("userId").textContent = user.id;
-        setStatus("Erfolgreich angemeldet.");
+        showMessage(
+          "Angemeldet als " +
+          (user.email || user.user_metadata?.full_name || "Mitglied") +
+          "."
+        );
+
+        logoutButton.hidden = false;
+        loginButton.hidden = true;
+        signupButton.hidden = true;
       } else {
-        loginEl.classList.remove("hidden");
-        accountEl.classList.add("hidden");
-        setStatus("Bitte melde dich an.");
+        logoutButton.hidden = true;
+        loginButton.hidden = false;
+        signupButton.hidden = false;
       }
     }
 
-    try {
-      if (
-        SUPABASE_URL === "DEINE_SUPABASE_PROJECT_URL" ||
-        SUPABASE_KEY === "DEIN_PUBLISHABLE_KEY"
-      ) {
-        throw new Error(
-          "Bitte zuerst deine Supabase-URL und deinen Publishable Key eintragen."
-        );
-      }
+    // MIT E-MAIL ANMELDEN
+    authForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      showMessage("Anmeldung läuft …");
 
-      supabase = createClient(SUPABASE_URL, SUPABASE_KEY, {
-        auth: {
-          persistSession: true,
-          autoRefreshToken: true,
-          detectSessionInUrl: true
-        }
-      });
-
-      googleBtn.addEventListener("click", () => signIn("google"));
-      discordBtn.addEventListener("click", () => signIn("discord"));
-
-      async function signIn(provider) {
-        setBusy(true);
-        setStatus("Weiterleitung zur Anmeldung …");
-
-        try {
-          const { error } = await supabase.auth.signInWithOAuth({
-            provider,
-            options: {
-              redirectTo: window.location.href.split("#")[0].split("?")[0]
-            }
-          });
-
-          if (error) throw error;
-        } catch (error) {
-          setStatus("Anmeldefehler: " + error.message);
-          setBusy(false);
-        }
-      }
-
-      logoutBtn.addEventListener("click", async () => {
-        setBusy(true);
-        const { error } = await supabase.auth.signOut();
+      try {
+        const { error } = await supabase.auth.signInWithPassword({
+          email: authEmail.value.trim(),
+          password: authPassword.value
+        });
 
         if (error) {
-          setStatus("Abmeldefehler: " + error.message);
+          showMessage("Anmeldung fehlgeschlagen: " + error.message);
+        } else {
+          showMessage("Du bist angemeldet.");
         }
-        setBusy(false);
-      });
+      } catch (error) {
+        showMessage("Verbindungsfehler. Bitte versuche es erneut.");
+      }
+    });
 
-      supabase.auth.onAuthStateChange((_event, session) => {
-        showUser(session?.user ?? null);
-        setBusy(false);
-      });
+    // KONTO ERSTELLEN
+    signupButton.addEventListener("click", async () => {
+      const email = authEmail.value.trim();
+      const password = authPassword.value;
 
-      const { data, error } = await supabase.auth.getSession();
-      if (error) throw error;
-      showUser(data.session?.user ?? null);
+      if (!email || !password) {
+        showMessage("Bitte gib E-Mail und Passwort ein.");
+        return;
+      }
 
-    } catch (error) {
-      setStatus("Einrichtungsfehler: " + error.message);
-      setBusy(false);
+      showMessage("Konto wird erstellt …");
+
+      try {
+        const { data, error } = await supabase.auth.signUp({
+          email,
+          password
+        });
+
+        if (error) {
+          showMessage(
+            "Konto konnte nicht erstellt werden: " + error.message
+          );
+        } else if (data.session) {
+          showMessage("Konto erstellt und angemeldet.");
+        } else {
+          showMessage(
+            "Konto erstellt. Bitte prüfe deine E-Mails und bestätige deine Adresse."
+          );
+        }
+      } catch (error) {
+        showMessage("Verbindungsfehler. Bitte versuche es erneut.");
+      }
+    });
+
+    // GOOGLE ODER DISCORD
+    async function oauth(provider) {
+      showMessage("Weiterleitung zur Anmeldung …");
+
+      try {
+        const { error } = await supabase.auth.signInWithOAuth({
+          provider,
+          options: {
+            redirectTo:
+              window.location.origin + window.location.pathname
+          }
+        });
+
+        if (error) {
+          showMessage(
+            "Anmeldung nicht möglich: " + error.message
+          );
+        }
+      } catch (error) {
+        showMessage("Verbindungsfehler. Bitte versuche es erneut.");
+      }
     }
+
+    document
+      .getElementById("google-button")
+      .addEventListener("click", () => oauth("google"));
+
+    document
+      .getElementById("discord-button")
+      .addEventListener("click", () => oauth("discord"));
+
+    // ABMELDEN
+    logoutButton.addEventListener("click", async () => {
+      const { error } = await supabase.auth.signOut();
+
+      if (error) {
+        showMessage("Abmelden fehlgeschlagen: " + error.message);
+      } else {
+        showMessage("Du wurdest abgemeldet.");
+      }
+    });
+
+    // AKTUELLEN ANMELDESTATUS LADEN
+    const {
+      data: { session }
+    } = await supabase.auth.getSession();
+
+    setSignedIn(session?.user ?? null);
+
+    supabase.auth.onAuthStateChange((_event, sessionNow) => {
+      setSignedIn(sessionNow?.user ?? null);
+    });
   </script>
 </body>
 </html>
