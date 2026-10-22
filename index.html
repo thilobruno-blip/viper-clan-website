@@ -2,486 +2,185 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Viper Clan | Minecraft PvP</title>
-<style>
-:root {
-  --bg:#0a0710; --panel:#171020; --purple:#a020f0;
-  --light:#d58aff; --text:#f7f2ff; --muted:#b8adc5;
-  --border:#392448;
-}
-* { box-sizing:border-box; }
-html { scroll-behavior:smooth; }
-body {
-  margin:0; background:var(--bg); color:var(--text);
-  font-family:Arial,sans-serif; line-height:1.6;
-}
-a { color:inherit; text-decoration:none; }
-header {
-  position:sticky; top:0; z-index:5; padding:16px 5%;
-  background:#0a0710f5; border-bottom:1px solid var(--border);
-}
-nav,.row {
-  display:flex; align-items:center; justify-content:space-between;
-  gap:12px; flex-wrap:wrap;
-}
-.logo { font-size:24px; font-weight:900; color:var(--light); }
-.links { display:flex; gap:14px; flex-wrap:wrap; }
-.links a:hover { color:var(--light); }
-section { padding:55px 6%; }
-.hero {
-  text-align:center; padding:100px 20px;
-  background:radial-gradient(ellipse,#35104b,#0a0710 75%);
-}
-h1 { font-size:clamp(42px,9vw,78px); margin:0; line-height:1.15; }
-h1 span,h2 span { color:var(--light); }
-p { color:var(--muted); }
-.hero p { font-size:18px; }
-.wrap { max-width:1000px; margin:auto; }
-.center { text-align:center; }
-.title { text-align:center; font-size:30px; margin:0 0 12px; }
-.btn {
-  display:inline-block; padding:11px 17px; border:0;
-  border-radius:8px; background:var(--purple); color:white;
-  font-weight:bold; cursor:pointer; margin:4px;
-}
-.btn.secondary { background:var(--panel); border:1px solid var(--border); }
-.btn.danger { background:#842c43; }
-.btn:disabled { opacity:.5; cursor:not-allowed; }
-.panel,.card,.song {
-  background:var(--panel); border:1px solid var(--border);
-  border-radius:13px; padding:20px; margin:14px 0;
-}
-.cards,.songs {
-  display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:16px; max-width:1050px; margin:25px auto;
-}
-.card h3,.song h3 { color:var(--light); margin-top:0; }
-.dark { background:#100b18; border-block:1px solid var(--border); }
-.song { margin:0; }
-iframe { width:100%; border:0; border-radius:10px; display:block; }
-label { display:block; margin:12px 0 5px; color:var(--light); }
-input,textarea,select {
-  width:100%; padding:12px; border-radius:8px;
-  border:1px solid var(--border); background:#0c0812;
-  color:var(--text); font:inherit;
-}
-textarea { min-height:90px; }
-.stack { display:grid; gap:12px; }
-.item {
-  background:#100b18; border:1px solid var(--border);
-  border-radius:9px; padding:13px; margin:10px 0;
-  overflow-wrap:anywhere;
-}
-.badge {
-  display:inline-block; border:1px solid var(--purple);
-  border-radius:20px; padding:2px 9px; color:var(--light);
-  font-size:12px;
-}
-.status { padding:12px; margin:12px 0; background:#241632;
-  border-radius:8px; overflow-wrap:anywhere; }
-.hidden { display:none !important; }
-footer { text-align:center; padding:25px; color:var(--muted); }
-.small { font-size:13px; }
-@media(max-width:600px) {
-  header { padding:12px 4%; }
-  .links { font-size:13px; gap:10px; }
-  section { padding:40px 5%; }
-  .hero { padding:70px 15px; }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Viper Clan – Anmeldung</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: #09090d;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+    .panel {
+      width: 100%;
+      max-width: 440px;
+      padding: 30px;
+      border: 1px solid #6929a5;
+      border-radius: 18px;
+      background: #14121b;
+      text-align: center;
+      box-shadow: 0 0 30px #7026a522;
+    }
+    h1 { color: #c084fc; margin-bottom: 8px; }
+    p { color: #c8c4d2; overflow-wrap: anywhere; }
+    button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 12px;
+      border: 0;
+      border-radius: 9px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .google { background: #fff; color: #222; }
+    .discord { background: #5865f2; color: white; }
+    .logout { background: #7829a8; color: white; }
+    button:disabled { opacity: .6; cursor: wait; }
+    #status { margin-top: 18px; font-size: 14px; }
+    #account { margin-top: 20px; }
+    .hidden { display: none; }
+    code { color: #d8b4fe; overflow-wrap: anywhere; }
+  </style>
 </head>
 <body>
+  <main class="panel">
+    <h1>🐍 VIPER CLAN</h1>
+    <p>Melde dich an, um weiterzumachen.</p>
 
-<header>
-<nav>
-  <a class="logo" href="#start">VIPER CLAN</a>
-  <div class="links">
-    <a href="#start">Start</a>
-    <a href="#about">Über uns</a>
-    <a href="#discord">Discord</a>
-    <a href="#music">Musik</a>
-    <a href="#account">Anmelden</a>
-    <a href="#dashboard">Dashboard</a>
-  </div>
-</nav>
-</header>
+    <section id="login">
+      <button class="google" id="googleBtn">
+        Mit Google anmelden
+      </button>
+      <button class="discord" id="discordBtn">
+        Mit Discord anmelden
+      </button>
+    </section>
 
-<main>
-<section class="hero" id="start">
-  <div>
-    <p class="badge">MINECRAFT PVP COMMUNITY</p>
-    <h1>VIPER <span>CLAN</span></h1>
-    <p>Gemeinsam stark. Gemeinsam gewinnen.</p>
-    <a class="btn" href="https://discord.gg/aXCUbF9Qr8"
-       target="_blank" rel="noopener noreferrer">Discord beitreten</a>
-    <a class="btn secondary" href="#about">Mehr erfahren</a>
-  </div>
-</section>
+    <section id="account" class="hidden">
+      <h2>Du bist angemeldet!</h2>
+      <p>E-Mail: <span id="email"></span></p>
+      <p>Deine User-ID:</p>
+      <code id="userId"></code>
+      <button class="logout" id="logoutBtn">Abmelden</button>
+    </section>
 
-<section id="about">
-  <h2 class="title">Willkommen beim Viper Clan</h2>
-  <p class="center">Deine Community für Minecraft PvP, Teamwork und gemeinsame Erfolge.</p>
-  <div class="cards">
-    <article class="card"><h3>Minecraft PvP</h3><p>Trainiere mit dem Team und stelle dich neuen Herausforderungen.</p></article>
-    <article class="card"><h3>Community</h3><p>Lerne Mitglieder kennen und werde Teil des Clans.</p></article>
-    <article class="card"><h3>Clan-News</h3><p>Hier kannst du später Neuigkeiten und Events ergänzen.</p></article>
-  </div>
-</section>
+    <p id="status">Verbindung wird vorbereitet …</p>
+  </main>
 
-<section class="dark center" id="discord">
-  <h2 class="title">Unser Discord</h2>
-  <p>Komm zu uns und lerne die Community kennen.</p>
-  <a class="btn" href="https://discord.gg/aXCUbF9Qr8"
-     target="_blank" rel="noopener noreferrer">Discord öffnen</a>
-</section>
+  <script type="module">
+    import {
+      createClient
+    } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 
-<section class="dark" id="music">
-  <h2 class="title">Viper Clan Musik</h2>
-  <p class="center">Unsere Songs direkt über Spotify anhören.</p>
-  <div class="songs">
-    <div class="song">
-      <h3>Viper Clan Song 1</h3>
-      <iframe title="Spotify Song 1" height="152"
-        src="https://open.spotify.com/embed/track/3Hz3hmzSeIqgQX1OvA2Mql"
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        loading="lazy"></iframe>
-    </div>
-    <div class="song">
-      <h3>Viper Clan Song 2</h3>
-      <iframe title="Spotify Song 2" height="152"
-        src="https://open.spotify.com/embed/track/3NUDYP9jp4xSErrHsi2vf4"
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        loading="lazy"></iframe>
-    </div>
-  </div>
-</section>
+    // WICHTIG: Hier deine echten Supabase-Daten eintragen.
+    const SUPABASE_URL = "DEINE_SUPABASE_PROJECT_URL";
+    const SUPABASE_KEY = "DEIN_PUBLISHABLE_KEY";
 
-<section id="account">
-<div class="wrap">
-  <h2 class="title">Mitgliederkonto</h2>
-  <p class="center">Melde dich an, um Nachrichten zu senden und dich für Rollen zu bewerben.</p>
-  <div class="panel">
-    <div id="configWarning" class="status">
-      Supabase fehlt noch. Trage deine Projekt-URL und deinen öffentlichen
-      anon/publishable Key unten im JavaScript ein.
-    </div>
-    <div id="loggedOut">
-      <button class="btn" id="googleBtn">Mit Google anmelden</button>
-      <button class="btn secondary" id="discordBtn">Mit Discord anmelden</button>
-    </div>
-    <div id="loggedIn" class="hidden">
-      <p id="userInfo"></p>
-      <button class="btn secondary" id="refreshBtn">Aktualisieren</button>
-      <button class="btn danger" id="logoutBtn">Abmelden</button>
-    </div>
-    <div id="status" class="status">Noch nicht angemeldet.</div>
-  </div>
-</div>
-</section>
+    const statusEl = document.getElementById("status");
+    const loginEl = document.getElementById("login");
+    const accountEl = document.getElementById("account");
+    const googleBtn = document.getElementById("googleBtn");
+    const discordBtn = document.getElementById("discordBtn");
+    const logoutBtn = document.getElementById("logoutBtn");
 
-<section id="message">
-<div class="wrap">
-  <h2 class="title">Nachricht senden</h2>
-  <div class="panel">
-    <form id="messageForm">
-      <label for="messageText">Deine Nachricht</label>
-      <textarea id="messageText" maxlength="2000" required></textarea>
-      <button class="btn">Nachricht senden</button>
-    </form>
-  </div>
-</div>
-</section>
+    let supabase;
 
-<section class="dark" id="apply">
-<div class="wrap">
-  <h2 class="title">Rollenbewerbung</h2>
-  <p class="center">Jede Rollenvergabe muss vom Haupt-Owner genehmigt werden.</p>
-  <div class="panel">
-    <form id="applicationForm">
-      <label for="requestedRole">Gewünschte Rolle</label>
-      <select id="requestedRole">
-        <option value="dev">Dev</option>
-        <option value="owner">Owner</option>
-        <option value="admin">Admin</option>
-        <option value="moderator">Moderator</option>
-      </select>
-      <label for="applicationText">Warum möchtest du die Rolle?</label>
-      <textarea id="applicationText" maxlength="2000" required></textarea>
-      <button class="btn">Bewerbung senden</button>
-    </form>
-  </div>
-</div>
-</section>
+    function setStatus(message) {
+      statusEl.textContent = message;
+    }
 
-<section id="dashboard">
-<div class="wrap">
-  <h2 class="title">Clan-Dashboard</h2>
-  <div id="dashboardGate" class="panel">Bitte melde dich an.</div>
-  <div id="dashboardContent" class="hidden stack">
-    <div class="panel">
-      <h3>Deine Rolle</h3><p id="roleInfo"></p>
-      <h3>Deine Bewerbungen</h3><div id="myApplications"></div>
-    </div>
+    function setBusy(busy) {
+      googleBtn.disabled = busy;
+      discordBtn.disabled = busy;
+      logoutBtn.disabled = busy;
+    }
 
-    <div id="devPanel" class="panel hidden">
-      <h3>Dev-Technikbereich</h3>
-      <p>Hier können später technische Aufgaben und Hinweise stehen.</p>
-    </div>
+    function showUser(user) {
+      if (user) {
+        loginEl.classList.add("hidden");
+        accountEl.classList.remove("hidden");
+        document.getElementById("email").textContent =
+          user.email || "Keine E-Mail verfügbar";
+        document.getElementById("userId").textContent = user.id;
+        setStatus("Erfolgreich angemeldet.");
+      } else {
+        loginEl.classList.remove("hidden");
+        accountEl.classList.add("hidden");
+        setStatus("Bitte melde dich an.");
+      }
+    }
 
-    <div id="adminPanel" class="panel hidden">
-      <h3>Admin-Bereich</h3>
-      <button class="btn" id="adminMessagesBtn">Nachrichten laden</button>
-      <button class="btn secondary" id="adminApplicationsBtn">Bewerbungen laden</button>
-      <div id="adminMessages"></div><div id="adminApplications"></div>
-    </div>
+    try {
+      if (
+        SUPABASE_URL === "DEINE_SUPABASE_PROJECT_URL" ||
+        SUPABASE_KEY === "DEIN_PUBLISHABLE_KEY"
+      ) {
+        throw new Error(
+          "Bitte zuerst deine Supabase-URL und deinen Publishable Key eintragen."
+        );
+      }
 
-    <div id="ownerPanel" class="panel hidden">
-      <h3>Haupt-Owner-Dashboard</h3>
-      <p>Nur <strong>thilobruno@gmail.com</strong> darf Rollen freigeben.</p>
-      <button class="btn" id="messagesBtn">Nachrichten laden</button>
-      <button class="btn secondary" id="applicationsBtn">Bewerbungen laden</button>
-      <button class="btn secondary" id="membersBtn">Rollenliste laden</button>
-      <h3>Nachrichten</h3><div id="messagesList"></div>
-      <h3>Bewerbungen</h3><div id="applicationsList"></div>
-      <h3>Rollen verwalten</h3>
-      <form id="roleForm">
-        <label for="targetId">User UUID</label>
-        <input id="targetId" placeholder="UUID aus der Rollenliste" required>
-        <label for="newRole">Neue Rolle</label>
-        <select id="newRole">
-          <option value="member">Mitglied</option>
-          <option value="dev">Dev</option>
-          <option value="admin">Admin</option>
-          <option value="moderator">Moderator</option>
-          <option value="owner">Owner</option>
-        </select>
-        <button class="btn">Rolle speichern</button>
-      </form>
-      <h3>Mitglieder und Rollen</h3><div id="membersList"></div>
-    </div>
-  </div>
-</div>
-</section>
-</main>
+      supabase = createClient(SUPABASE_URL, SUPABASE_KEY, {
+        auth: {
+          persistSession: true,
+          autoRefreshToken: true,
+          detectSessionInUrl: true
+        }
+      });
 
-<footer>© 2026 <span>Viper Clan</span> · Gemeinsam stark.</footer>
+      googleBtn.addEventListener("click", () => signIn("google"));
+      discordBtn.addEventListener("click", () => signIn("discord"));
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>
-// ===== HIER DEINE SUPABASE-DATEN EINTRAGEN =====
-// Supabase -> Project Settings / Connect.
-// Nur den öffentlichen anon/publishable Key verwenden.
-// NIEMALS den service_role- oder secret-Key hier eintragen.
-const SUPABASE_URL = "HIER_DEINE_SUPABASE_PROJECT_URL";
-const SUPABASE_KEY = "HIER_DEIN_PUBLIC_ANON_ODER_PUBLISHABLE_KEY";
-const OWNER_EMAIL = "thilobruno@gmail.com";
+      async function signIn(provider) {
+        setBusy(true);
+        setStatus("Weiterleitung zur Anmeldung …");
 
-const ready = SUPABASE_URL.startsWith("https://") &&
-  !SUPABASE_URL.includes("HIER_DEINE") &&
-  SUPABASE_KEY && !SUPABASE_KEY.includes("HIER_DEIN");
+        try {
+          const { error } = await supabase.auth.signInWithOAuth({
+            provider,
+            options: {
+              redirectTo: window.location.href.split("#")[0].split("?")[0]
+            }
+          });
 
-const $ = id => document.getElementById(id);
-const esc = value => String(value ?? "").replace(/[&<>"']/g, c => ({
-  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-})[c]);
-let db = null, user = null, role = "member";
+          if (error) throw error;
+        } catch (error) {
+          setStatus("Anmeldefehler: " + error.message);
+          setBusy(false);
+        }
+      }
 
-function say(text) { $("status").textContent = text; }
-function isPrimaryOwner() {
-  return !!user && user.email?.toLowerCase() === OWNER_EMAIL.toLowerCase()
-    && role === "owner";
-}
-function canReadRequests() {
-  return role === "admin" || isPrimaryOwner();
-}
-function validRole(value) {
-  return ["owner","dev","admin","moderator","member"].includes(value)
-    ? value : "member";
-}
-function showLogin() {
-  $("loggedOut").classList.toggle("hidden", !!user);
-  $("loggedIn").classList.toggle("hidden", !user);
-  $("userInfo").textContent = user
-    ? "Angemeldet: " + (user.email || user.id) : "";
-  $("dashboardContent").classList.add("hidden");
-  $("dashboardGate").textContent = user
-    ? "Deine Zugriffsrechte werden geprüft …" : "Bitte melde dich an.";
-}
-async function login(provider) {
-  if (!db) return say("Bitte zuerst Supabase konfigurieren.");
-  const {error} = await db.auth.signInWithOAuth({
-    provider,
-    options: {redirectTo: location.href.split("#")[0]}
-  });
-  if (error) say("Login-Fehler: " + error.message);
-}
-async function refresh() {
-  if (!db) return;
-  const {data} = await db.auth.getSession();
-  user = data.session?.user || null;
-  showLogin();
-  if (user) await loadDashboard();
-  else { role = "member"; say("Du bist abgemeldet."); }
-}
-async function loadDashboard() {
-  const {data,error} = await db.from("user_roles")
-    .select("role").eq("user_id",user.id).maybeSingle();
-  if (error) {
-    $("dashboardGate").textContent =
-      "Rolle konnte nicht geladen werden. Prüfe die SQL-Einrichtung: " + error.message;
-    return;
-  }
-  role = validRole(data?.role || "member");
-  $("dashboardContent").classList.remove("hidden");
-  $("dashboardGate").textContent = "Angemeldet: " + (user.email || user.id);
-  $("roleInfo").innerHTML = '<span class="badge">' + esc(role.toUpperCase()) + '</span>';
-  $("ownerPanel").classList.toggle("hidden", !isPrimaryOwner());
-  $("adminPanel").classList.toggle("hidden", !canReadRequests());
-  $("devPanel").classList.toggle("hidden", !(role === "dev" || isPrimaryOwner()));
-  await loadMyApplications();
-}
-async function submitMessage(event) {
-  event.preventDefault();
-  if (!user) return say("Bitte melde dich zuerst an.");
-  const message = $("messageText").value.trim();
-  if (!message) return;
-  const {error} = await db.from("messages").insert({user_id:user.id,message});
-  if (error) say("Fehler: " + error.message);
-  else { $("messageText").value=""; say("Nachricht wurde gesendet."); }
-}
-async function submitApplication(event) {
-  event.preventDefault();
-  if (!user) return say("Bitte melde dich zuerst an.");
-  const requested_role = $("requestedRole").value;
-  const message = $("applicationText").value.trim();
-  if (!message) return;
-  const {error} = await db.from("role_applications").insert({
-    user_id:user.id,requested_role,message
-  });
-  if (error) say("Fehler: " + error.message);
-  else {
-    $("applicationText").value="";
-    say("Bewerbung gesendet. Die Rolle wird erst nach Freigabe aktiviert.");
-    await loadMyApplications();
-  }
-}
-async function loadMyApplications() {
-  const {data,error} = await db.from("role_applications")
-    .select("id,requested_role,message,status,created_at")
-    .eq("user_id",user.id).order("created_at",{ascending:false});
-  if (error) { $("myApplications").textContent=error.message; return; }
-  $("myApplications").innerHTML = !data?.length ? "<p>Noch keine Bewerbungen.</p>" :
-    data.map(a=>`<div class="item"><b>${esc(a.requested_role.toUpperCase())}</b>
-    <span class="badge">${esc(a.status)}</span><p>${esc(a.message)}</p></div>`).join("");
-}
-async function loadMessages(target="messagesList") {
-  if (!canReadRequests()) return say("Keine Berechtigung.");
-  const {data,error} = await db.from("messages")
-    .select("id,user_id,message,created_at")
-    .order("created_at",{ascending:false}).limit(100);
-  const box=$(target);
-  if(error){box.textContent=error.message;return;}
-  box.innerHTML=!data?.length?"<p>Keine Nachrichten vorhanden.</p>":
-    data.map(m=>`<div class="item"><p>${esc(m.message)}</p>
-    <p class="small">UUID: ${esc(m.user_id)} · ${esc(m.created_at)}</p></div>`).join("");
-}
-async function loadApplications(target="applicationsList") {
-  if (!canReadRequests()) return say("Keine Berechtigung.");
-  const {data,error} = await db.from("role_applications")
-    .select("id,user_id,requested_role,message,status,created_at")
-    .order("created_at",{ascending:false}).limit(100);
-  const box=$(target);
-  if(error){box.textContent=error.message;return;}
-  if(!data?.length){box.innerHTML="<p>Keine Bewerbungen vorhanden.</p>";return;}
-  box.innerHTML=data.map(a=>{
-    const actions=isPrimaryOwner() && a.status==="pending" ?
-      `<p><button class="btn" data-action="approve" data-id="${esc(a.id)}"
-      data-user="${esc(a.user_id)}" data-role="${esc(a.requested_role)}">Annehmen & Rolle vergeben</button>
-      <button class="btn danger" data-action="reject" data-id="${esc(a.id)}">Ablehnen</button></p>`:"";
-    return `<div class="item"><b>${esc(a.requested_role.toUpperCase())}</b>
-      <span class="badge">${esc(a.status)}</span><p>${esc(a.message)}</p>
-      <p class="small">UUID: ${esc(a.user_id)}</p>${actions}</div>`;
-  }).join("");
-}
-async function reviewApplication(id,action,userId,requestedRole) {
-  if (!isPrimaryOwner()) return say("Nur der Haupt-Owner darf freigeben.");
-  if (action==="approve") {
-    const {error} = await db.from("user_roles").upsert({
-      user_id:userId,role:validRole(requestedRole),
-      updated_by:user.id,updated_at:new Date().toISOString()
-    },{onConflict:"user_id"});
-    if(error) return say("Rollenfehler: "+error.message);
-  }
-  const {error} = await db.from("role_applications").update({
-    status:action==="approve"?"approved":"rejected",
-    reviewed_by:user.id,reviewed_at:new Date().toISOString()
-  }).eq("id",id);
-  if(error) say("Fehler: "+error.message);
-  else {
-    say(action==="approve"?"Bewerbung genehmigt.":"Bewerbung abgelehnt.");
-    await loadApplications();
-    await loadMembers();
-    await loadDashboard();
-  }
-}
-async function loadMembers() {
-  if (!isPrimaryOwner()) return say("Nur der Haupt-Owner darf Rollen verwalten.");
-  const {data,error}=await db.from("user_roles")
-    .select("user_id,role,updated_at").order("updated_at",{ascending:false}).limit(200);
-  if(error){$("membersList").textContent=error.message;return;}
-  $("membersList").innerHTML=!data?.length?"<p>Keine Mitglieder gefunden.</p>":
-    data.map(m=>`<div class="item"><b>${esc(m.role.toUpperCase())}</b>
-    <p class="small">UUID: ${esc(m.user_id)}</p>
-    <button class="btn secondary" data-copy="${esc(m.user_id)}">UUID kopieren</button></div>`).join("");
-}
-async function saveRole(event) {
-  event.preventDefault();
-  if (!isPrimaryOwner()) return say("Nur der Haupt-Owner kann Rollen vergeben.");
-  const user_id=$("targetId").value.trim();
-  const newRole=validRole($("newRole").value);
-  const {error}=await db.from("user_roles").upsert({
-    user_id,role:newRole,updated_by:user.id,updated_at:new Date().toISOString()
-  },{onConflict:"user_id"});
-  if(error) say("Fehler: "+error.message);
-  else {say("Rolle gespeichert.");$("targetId").value="";await loadMembers();}
-}
-document.addEventListener("click",async e=>{
-  const b=e.target.closest("button"); if(!b)return;
-  if(b.dataset.action) await reviewApplication(
-    b.dataset.id,b.dataset.action,b.dataset.user,b.dataset.role
-  );
-  if(b.dataset.copy) {
-    try {await navigator.clipboard.writeText(b.dataset.copy);say("UUID kopiert.");}
-    catch {$("targetId").value=b.dataset.copy;say("UUID ins Feld eingefügt.");}
-  }
-});
-$("googleBtn").onclick=()=>login("google");
-$("discordBtn").onclick=()=>login("discord");
-$("logoutBtn").onclick=async()=>{await db.auth.signOut();user=null;showLogin();say("Abgemeldet.");};
-$("refreshBtn").onclick=refresh;
-$("messageForm").onsubmit=submitMessage;
-$("applicationForm").onsubmit=submitApplication;
-$("messagesBtn").onclick=()=>loadMessages();
-$("applicationsBtn").onclick=()=>loadApplications();
-$("membersBtn").onclick=loadMembers;
-$("adminMessagesBtn").onclick=()=>loadMessages("adminMessages");
-$("adminApplicationsBtn").onclick=()=>loadApplications("adminApplications");
-$("roleForm").onsubmit=saveRole;
+      logoutBtn.addEventListener("click", async () => {
+        setBusy(true);
+        const { error } = await supabase.auth.signOut();
 
-if (ready && window.supabase) {
-  $("configWarning").classList.add("hidden");
-  db=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
-  db.auth.onAuthStateChange((_event,session)=>{
-    user=session?.user||null;showLogin();
-    if(user) setTimeout(loadDashboard,0);
-  });
-  refresh();
-} else {
-  $("googleBtn").disabled=true;
-  $("discordBtn").disabled=true;
-}
-</script>
+        if (error) {
+          setStatus("Abmeldefehler: " + error.message);
+        }
+        setBusy(false);
+      });
+
+      supabase.auth.onAuthStateChange((_event, session) => {
+        showUser(session?.user ?? null);
+        setBusy(false);
+      });
+
+      const { data, error } = await supabase.auth.getSession();
+      if (error) throw error;
+      showUser(data.session?.user ?? null);
+
+    } catch (error) {
+      setStatus("Einrichtungsfehler: " + error.message);
+      setBusy(false);
+    }
+  </script>
 </body>
 </html>
